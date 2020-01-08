@@ -13,7 +13,7 @@ from cachetools import cached, TTLCache
 
 
 class OpenExchangeId:
-    @cached(cache=TTLCache(maxsize=2, ttl=900))
+
     def get_app_id(self):
 
         log_in_mail, log_in_pass = self.enter_account_credentials()
@@ -23,9 +23,6 @@ class OpenExchangeId:
 
         driver = webdriver.Chrome(options=chrome_options)
         driver.get("https://openexchangerates.org/account/app-ids")
-
-        # log_in_mail = 'vladimir.kocis.tubic@gmail.com'
-        # log_in_pass = 'vladimirapi3101'
        
         email_in = driver.find_element_by_name('email')
         email_in.send_keys(log_in_mail)
@@ -58,4 +55,4 @@ class OpenExchangeId:
 
 if __name__ == '__main__':
     openid = OpenExchangeId()
-    print(openid.get_app_id())
+

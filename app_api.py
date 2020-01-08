@@ -14,9 +14,7 @@ from libs.get_app_id import OpenExchangeId
 open_excange_id = OpenExchangeId()
 
 APP_ID = open_excange_id.get_app_id()
-# print(APP_ID)
 
-# APP_ID = "6dc2501fe6e143d8a53ff77b569a0c3e"
 start = time.time()
 client = OpenExchangeClient(APP_ID)
 

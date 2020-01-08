@@ -8,7 +8,6 @@ class OpenExchangeClient:
         self.app_id = app_id
 
     @property
-    @cached(cache=TTLCache(maxsize=2, ttl=900))
     def latest_json(self):
         return requests.get("{}/latest.json?app_id={}".format(self.BASE_URL, self.app_id)).json()
 
