@@ -1,12 +1,14 @@
 import requests
+from cachetools import cached, TTLCache
 
-class OpenExcangeClient:
+class OpenExchangeClient:
     BASE_URL = "https://openexchangerates.org/api"
 
     def __init__(self, app_id):
         self.app_id = app_id
 
     @property
+    @cached(cache=TTLCache(maxsize=2, ttl=900))
     def latest_json(self):
         return requests.get("{}/latest.json?app_id={}".format(self.BASE_URL, self.app_id)).json()
 
